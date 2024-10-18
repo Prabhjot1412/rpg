@@ -1,0 +1,1 @@
+Dir["../battle/*.rb"].each {|file| require_relative file }
