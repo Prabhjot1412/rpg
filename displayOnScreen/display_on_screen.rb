@@ -28,5 +28,3 @@ module DisplayOnScreen
     print " " * (length/4) if properties.include?(:center)
   end
 end
-
-# DisplayOnScreen.box(values: {row1: ["name", :center], row2: ["hp: 100", "mp: 100", "stamina: 50"], row3: []})

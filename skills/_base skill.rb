@@ -6,7 +6,7 @@ class BaseSkill
     @targets  = targets
   end
 
-  def cast(targets: [BaseCharacter.new], caster: BaseCharacter.new)
+  def cast(targets: [BaseCharacter.new], caster: BaseCharacter.new, battle_logs: [])
     # do something
   end
 

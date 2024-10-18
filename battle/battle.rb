@@ -3,6 +3,7 @@ class Battle
   def initialize(enemies: [BaseCharacter.new], player: BaseCharacter.new)
     @enemies = enemies
     @player = player
+    @battle_logs = []
   end
 
   def start
@@ -24,6 +25,8 @@ class Battle
         row2: ["hp: #{@player.hp.to_s.green}", "mp: #{@player.mp.to_s.blue}", "stamina: #{@player.stamina.to_s.yellow}"]
       })
 
+      show_battle_logs
+
       options = ['Attack', 'Run Away']
       input = GiveOptions.select_from_array(array: options)
       break if options[input] == 'Run Away'
@@ -43,6 +46,27 @@ class Battle
     input = GiveOptions.select_from_array(array: options)
     return if input == 'ESCAPE'
 
-    # anchor perform attack on @enemies[input]
+    @player.cast_spell('Attack', targets: [@enemies[input]], battle_logs: @battle_logs)
+
+    @enemies.each do |enemy|
+      take_turn(enemy: enemy)
+    end
+  end
+
+  def take_turn(enemy:)
+    # to-do enhance this when more skills are added
+
+    enemy_spell = enemy.skills.keys.sample
+    enemy.cast_spell(enemy_spell, targets: [@player], battle_logs: @battle_logs)
+  end
+
+  def show_battle_logs
+    logs = {}
+
+    @battle_logs.last(6).each_with_index do |log, i|
+      logs["row#{i}".to_sym] = log
+    end
+
+    DisplayOnScreen.box(values: logs)
   end
 end
