@@ -14,5 +14,3 @@ class BaseCharacter
     @hp -= amount
   end
 end
-
-puts BaseCharacter.new

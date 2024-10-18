@@ -1,5 +1,3 @@
-require_relative 'base skill'
-
 class Attack < BaseSkill
   def initialize(name: 'Attack')
     super(name: name)
@@ -13,8 +11,3 @@ class Attack < BaseSkill
     end
   end
 end
-
-# targets = [BaseCharacter.new]
-# caster  = BaseCharacter.new
-# Attack.new.cast(targets:, caster:)
-# puts  targets[0].hp

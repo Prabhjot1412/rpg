@@ -1,6 +1,3 @@
-require_relative '../giveOptions/give_options'
-require_relative '../characters/index'
-
 module DisplayOnScreen
   extend self
 

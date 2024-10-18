@@ -1,6 +1,3 @@
-require_relative 'keypress'
-require 'colorize'
-
 module GiveOptions
   extend self
 
@@ -39,5 +36,3 @@ module GiveOptions
     print str + "\r"
   end
 end
-
-# puts GiveOptions.select_from_array(array: ['option1', 'option2', 'option3'])

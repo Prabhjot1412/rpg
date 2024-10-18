@@ -1,5 +1,3 @@
-require_relative '../characters/index'
-
 class BaseSkill
   attr_reader :strength, :name, :targets
   def initialize(name: 'Base Skill', strength: 10, targets: 'single')

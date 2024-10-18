@@ -1,7 +1,3 @@
-require_relative '../characters/index'
-require_relative '../displayOnScreen/display_on_screen'
-require_relative '../giveOptions/give_options'
-require 'colorize'
 
 class Battle
   def initialize(enemies: [BaseCharacter.new], player: BaseCharacter.new)
@@ -50,6 +46,3 @@ class Battle
     # anchor perform attack on @enemies[input]
   end
 end
-
-battle = Battle.new
-battle.start
