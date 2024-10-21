@@ -11,6 +11,6 @@ class Attack < BaseSkill
     battle_logs << ["#{caster.name} used #{name} on #{targets.map(&:name).join(', ')}\n" \
                    "it dealt #{skill_strength(caster:)} points of damage \n"]
 
-      targets[input].reduce_hp(amount: skill_strength(caster:))
+    targets[input].reduce_hp(amount: skill_strength(caster:))
   end
 end

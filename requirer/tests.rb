@@ -5,6 +5,10 @@ puts BaseCharacter.new
 goblin = Goblin.new(hp: 180)
 raise if goblin.hp != 180
 
+# jobs
+goblin = Goblin.new(level: 3)
+raise if goblin.level != 3
+
 # battle
 player = BaseCharacter.new(name: 'myname', player: true, hp: 200, skills: {'Attack' => Attack.new, 'Fury Swipes' => FurySwipes.new})
 battle = Battle.new(player:, enemies: [Goblin.new(hp: 2000)])
@@ -28,7 +32,7 @@ DisplayOnScreen.box(values: {row1: ["name", :center], row2: ["hp: 100", "mp: 100
 # puts player.name
 
 # tower
-tower = Tower.new
-tower.start
+# tower = Tower.new
+# tower.start
 
 puts "SUCCESS".green
