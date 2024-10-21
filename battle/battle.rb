@@ -9,6 +9,8 @@ class Battle
   def start
     loop do
       system('clear')
+      break if finish_battle
+
       @enemies.each do |enemy|
         DisplayOnScreen.box(values: {
           row1: [enemy.name, :center],
@@ -16,7 +18,7 @@ class Battle
         })
       end
 
-      3.times do
+      2.times do
         puts ""
       end
 
@@ -34,6 +36,8 @@ class Battle
 
       
       handle_atttack if options[input] == 'Attack'
+
+      handle_death
     end
   end
 
@@ -68,5 +72,23 @@ class Battle
     end
 
     DisplayOnScreen.box(values: logs)
+  end
+
+  def handle_death
+    if @player.is_dead?
+      puts "game over".red
+      exit
+    end
+
+    @enemies.each do |enemy|
+      if enemy.is_dead?
+        @battle_logs.push("#{enemy.name} is died".blue)
+        @enemies.delete(enemy)
+      end
+    end
+  end
+
+  def finish_battle
+    @enemies.empty?
   end
 end

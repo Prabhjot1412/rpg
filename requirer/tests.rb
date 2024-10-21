@@ -4,8 +4,8 @@ require_relative 'index'
 puts BaseCharacter.new
 
 # battle
-battle = Battle.new
-battle.start
+# battle = Battle.new(player: BaseCharacter.new(hp: 200))
+# battle.start
 
 # giveOptions
 # puts GiveOptions.select_from_array(array: ['option1', 'option2', 'option3'])

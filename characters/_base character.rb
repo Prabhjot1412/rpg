@@ -17,4 +17,8 @@ class BaseCharacter
   def cast_spell(spell_name, targets: [BaseCharacter.new], battle_logs: [])
     skills[spell_name].cast(targets:, battle_logs:, caster: self)
   end
+
+  def is_dead?
+    @hp <= 0
+  end
 end
