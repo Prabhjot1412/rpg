@@ -1,6 +1,6 @@
 class BaseCharacter
-  attr_accessor :hp, :mp, :stamina, :name, :strength, :level, :skills
-  def initialize(name: 'no name', hp: 100, mp: 100, stamina: 50, strength: 10, level: 1, skills: {'Attack' => Attack.new})
+  attr_accessor :hp, :mp, :stamina, :name, :strength, :level, :skills, :player
+  def initialize(name: 'no name', hp: 100, mp: 100, stamina: 50, strength: 10, level: 1, skills: {'Attack' => Attack.new}, player: false)
     @name     = name
     @hp       = hp
     @mp       = mp
@@ -8,6 +8,7 @@ class BaseCharacter
     @strength = strength
     @level    = level
     @skills   = skills
+    @player = false
   end
 
   def reduce_hp(amount: 10)

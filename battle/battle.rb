@@ -29,28 +29,26 @@ class Battle
 
       show_battle_logs
 
-      options = ['Attack', 'Run Away']
+      options = [@player.skills.keys, 'Run Away'].flatten
       input = GiveOptions.select_from_array(array: options)
       break if options[input] == 'Run Away'
       next if input == 'ESCAPE'
 
-      
-      handle_atttack if options[input] == 'Attack'
+      handle_atttack(options[input])
 
-      handle_death
+      return "dead" if handle_death == 'dead'
     end
   end
 
   private
 
-  def handle_atttack
-    system('clear')
-    puts "pick your target"
-    options = @enemies.map(&:name)
-    input = GiveOptions.select_from_array(array: options)
-    return if input == 'ESCAPE'
+  def handle_atttack(spell)
+    if @player.skills[spell].cost > @player.mp
+      @battle_logs << ["not enough mp".blue]
+      return
+    end
 
-    @player.cast_spell('Attack', targets: [@enemies[input]], battle_logs: @battle_logs)
+    @player.cast_spell(spell, targets: @enemies, battle_logs: @battle_logs)
 
     @enemies.each do |enemy|
       take_turn(enemy: enemy)
@@ -58,9 +56,10 @@ class Battle
   end
 
   def take_turn(enemy:)
-    # to-do enhance this when more skills are added
+    enemy_spell = enemy.skills.keys.select do |key|
+      enemy.skills[key].cost <= enemy.mp
+    end.sample
 
-    enemy_spell = enemy.skills.keys.sample
     enemy.cast_spell(enemy_spell, targets: [@player], battle_logs: @battle_logs)
   end
 
@@ -77,7 +76,7 @@ class Battle
   def handle_death
     if @player.is_dead?
       puts "game over".red
-      exit
+      return 'dead'
     end
 
     @enemies.each do |enemy|
