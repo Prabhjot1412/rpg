@@ -8,11 +8,21 @@ class Tower
 
   def start
     loop do
-      puts "#{@floor}"
-      enemy = CharacterList.enemies.sample.new
-      battle = Battle.new(player:, enemies: [enemy])
-      battle_result = battle.start
-      break if battle_result == 'dead'
+      puts "Current floor: #{@floor}".blue
+      sleep @config.text_pause
+
+      @floor.times do
+        enemy = select_from_enemies_for_floor(floor: @floor)
+
+        battle = Battle.new(player:, enemies: [enemy])
+        battle_result = battle.start
+        break if @player.is_dead?
+      end
+
+      break if @player.is_dead?
+
+      @floor += 1
+      @player.level_up
     end
 
     puts "you reached floor #{@floor}"
@@ -20,5 +30,15 @@ class Tower
     raise unless @config.debug_mode
 
     debugger
+  end
+
+  private
+
+  def select_from_enemies_for_floor(floor: 1)
+    if floor == 1
+      [Goblin].sample.new(level: floor)
+    else
+      [Goblin].sample.new(level: floor)
+    end
   end
 end

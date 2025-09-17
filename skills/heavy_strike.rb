@@ -1,6 +1,6 @@
-class MagicStrike < BaseSkill
-  def initialize(name: 'Magic Strike')
-    super(name: name, strength: 20, cost: 40, cost_type: 'mp')
+class HeavyStrike < BaseSkill
+  def initialize(name: 'Heavy Strike')
+    super(name: name, strength: 20, cost: 40, cost_type: 'stamina')
   end
 
   def cast(targets: [BaseCharacter.new], caster: BaseCharacter.new, battle_logs: [])
@@ -12,6 +12,6 @@ class MagicStrike < BaseSkill
     targets[input].reduce_hp(amount: skill_strength(caster:))
 
     battle_logs << [log]
-    caster.mp -= cost
+    caster.stamina -= cost
   end
 end

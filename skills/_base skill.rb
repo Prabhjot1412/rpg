@@ -1,10 +1,11 @@
 class BaseSkill
-  attr_reader :strength, :name, :targets, :cost
-  def initialize(name: 'Base Skill', strength: 10, targets: 'single', cost: 0)
+  attr_reader :strength, :name, :targets, :cost, :cost_type
+  def initialize(name: 'Base Skill', strength: 10, targets: 'single', cost: 0, cost_type: 'mp')
     @strength = strength
     @name     = name
     @targets  = targets # single or multiple
     @cost = cost
+    @cost_type = cost_type # mp or stamina
   end
 
   def cast(targets: [BaseCharacter.new], caster: BaseCharacter.new, battle_logs: [])

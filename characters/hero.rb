@@ -6,7 +6,6 @@ class Hero < BaseCharacter
 
     super(**args)
 
-    @skills['Heavy Strike'] = MagicStrike.new
     @skills['Heal'] = Heal.new
   end
 end

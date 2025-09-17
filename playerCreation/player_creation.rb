@@ -9,7 +9,19 @@ class PlayerCreation
       print "Enter a name >>>"
       name = gets.chomp
 
-      @@player = Hero.new(name:, player: true)
+      puts ""
+      puts "Select your job"
+      options = ['Warrior', 'Mage']
+      input = GiveOptions.select_from_array(array: options)
+      job = options[input]
+      case job
+      when 'Warrior'
+        job = Warrior.new
+      when 'Mage'
+        job = Mage.new
+      end
+
+      @@player = Hero.new(name:, player: true, job:)
     end
 
     def singleton_player

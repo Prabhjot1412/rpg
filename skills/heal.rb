@@ -1,14 +1,14 @@
 class Heal < BaseSkill
   def initialize(name: 'Heal')
-    super(name: name, strength: 50, cost: 40)
+    super(name: name, strength: 50, cost: 40, cost_type: 'mp')
   end
 
   def cast(targets: [BaseCharacter.new], caster: BaseCharacter.new, battle_logs: [])
-    targets = [targets, caster].flatten
-    log = "#{caster.name} used #{name} on #{targets.map(&:name).join(', ')}\n"
-    input = get_single_target(caster:, targets:)
+    targets = [caster, targets].flatten
+    log = "#{caster.name} used #{name} on self\n"
+    input = caster
 
-    amount = targets[input].heal_hp(amount: skill_strength(caster:))
+    amount = caster.heal_hp(amount: skill_strength(caster:))
 
     log += "it healed #{amount} points of damage \n"
 

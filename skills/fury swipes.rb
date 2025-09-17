@@ -1,6 +1,6 @@
 class FurySwipes < BaseSkill
   def initialize(name: 'Fury Swipes')
-    super(name: name, strength: 1, cost: 45)
+    super(name: name, strength: 1, cost: 45, cost_type: 'stamina')
   end
 
   def cast(targets: [BaseCharacter.new], caster: BaseCharacter.new, battle_logs: [])
@@ -15,6 +15,6 @@ class FurySwipes < BaseSkill
     end
 
     battle_logs << [log]
-    caster.mp -= cost
+    caster.stamina -= cost
   end
 end

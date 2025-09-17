@@ -7,4 +7,10 @@ class Warrior < BaseJob
       level: 1
     }
   end
+
+  def initial_skills
+    {
+      'Heavy Strike' => HeavyStrike.new
+    }
+  end
 end

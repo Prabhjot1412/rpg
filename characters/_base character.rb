@@ -16,6 +16,8 @@ class BaseCharacter
     @job      = job
 
     @level = 1
+
+    set_initial_skills
     set_level(level:) if level > 1
   end
 
@@ -46,5 +48,16 @@ class BaseCharacter
 
   def level_up
     @job.level_up(character: self)
+    reset_stats
+  end
+
+  def reset_stats
+    @hp = @max_hp
+    @mp = @max_mp
+    @stamina = @max_stamina
+  end
+
+  def set_initial_skills
+    @skills = @skills.merge(@job.initial_skills)
   end
 end

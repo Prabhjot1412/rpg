@@ -13,4 +13,8 @@ class BaseJob
       level: 1
     }
   end
+
+  def initial_skills
+    {}
+  end
 end

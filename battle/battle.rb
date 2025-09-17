@@ -43,9 +43,11 @@ class Battle
   private
 
   def handle_atttack(spell)
-    if @player.skills[spell].cost > @player.mp
-      @battle_logs << ["not enough mp".blue]
-      return
+    ['mp', 'stamina'].each do |cost_type|
+      if @player.skills[spell].cost_type == cost_type && @player.skills[spell].cost > @player.send(cost_type)
+        @battle_logs << ["not enough #{cost_type}".blue]
+        return
+      end
     end
 
     @player.cast_spell(spell, targets: @enemies, battle_logs: @battle_logs)
