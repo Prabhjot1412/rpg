@@ -7,8 +7,9 @@ class BaseJob
 
   def stats
     {
-      hp: 10,
-      mp: 10,
+      max_hp: 10,
+      max_mp: 10,
+      max_stamina: 10,
       level: 1
     }
   end

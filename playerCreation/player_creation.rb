@@ -9,7 +9,7 @@ class PlayerCreation
       print "Enter a name >>>"
       name = gets.chomp
 
-      @@player = BaseCharacter.new(name:)
+      @@player = Hero.new(name:, player: true)
     end
 
     def singleton_player

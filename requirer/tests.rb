@@ -26,13 +26,12 @@ raise unless  targets[0].hp == 90
 # displayOnScreen
 DisplayOnScreen.box(values: {row1: ["name", :center], row2: ["hp: 100", "mp: 100", "stamina: 50"], row3: []})
 
-# playerCreation
-# PlayerCreation.create
-# player = PlayerCreation.singleton_player
-# puts player.name
+# playerCreation and tower
+PlayerCreation.create
+player = PlayerCreation.singleton_player
+puts player.name
 
-# tower
-# tower = Tower.new
-# tower.start
+tower = Tower.new(player: player)
+tower.start
 
 puts "SUCCESS".green

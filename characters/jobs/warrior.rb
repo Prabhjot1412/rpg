@@ -1,8 +1,9 @@
 class Warrior < BaseJob
   def stats
     {
-      hp: 15,
-      mp: 5,
+      max_hp: 15,
+      max_mp: 5,
+      max_stamina: 10,
       level: 1
     }
   end

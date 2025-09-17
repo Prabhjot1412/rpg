@@ -26,5 +26,7 @@ class BaseSkill
     else
      input = rand(targets.count)
     end
+
+    input
   end
 end

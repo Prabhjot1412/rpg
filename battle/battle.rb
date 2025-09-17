@@ -14,7 +14,7 @@ class Battle
       @enemies.each do |enemy|
         DisplayOnScreen.box(values: {
           row1: [enemy.name, :center],
-          row2: ["hp: #{enemy.hp.to_s.green}", "mp: #{enemy.mp.to_s.blue}", "stamina: #{enemy.stamina.to_s.yellow}"]
+          row2: ["hp: #{enemy.hp.to_s.green}/#{enemy.max_hp.to_s.green}", "mp: #{enemy.mp.to_s.blue}/#{enemy.max_mp.to_s.blue}", "stamina: #{enemy.stamina.to_s.yellow}/#{enemy.max_stamina.to_s.yellow}"]
         })
       end
 
@@ -24,7 +24,7 @@ class Battle
 
       DisplayOnScreen.box(values: {
         row1: [@player.name, :center],
-        row2: ["hp: #{@player.hp.to_s.green}", "mp: #{@player.mp.to_s.blue}", "stamina: #{@player.stamina.to_s.yellow}"]
+        row2: ["hp: #{@player.hp.to_s.green}/#{@player.max_hp.to_s.green}", "mp: #{@player.mp.to_s.blue}/#{@player.max_mp.to_s.blue}", "stamina: #{@player.stamina.to_s.yellow}/#{@player.max_stamina.to_s.yellow}"]
       })
 
       show_battle_logs
